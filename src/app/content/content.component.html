@@ -1,0 +1,6 @@
+<div class="content-container">
+  <app-sidebar (showData)="onNewData($event)"></app-sidebar>
+    <div class="content-area">
+      <app-renderer [body]="htmlData"></app-renderer>
+    </div>
+  </div>

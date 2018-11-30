@@ -1,0 +1,14 @@
+<nav class="sidenav">
+  <h3>Categories</h3>
+  <section class="sidenav-content" *ngFor="let category of categories">
+    <section class="nav-group collapsible">
+      <input id="{{category.name}}" type="checkbox">
+      <label for="{{category.name}}">{{category.name}}</label>
+      <ul class="nav-list">
+        <li *ngFor="let sub of category.subcategories">
+          <a class="nav-link" (click)=getCategoryItem($event)>{{sub}}</a>
+        </li>
+      </ul>
+    </section>
+  </section>
+</nav>
