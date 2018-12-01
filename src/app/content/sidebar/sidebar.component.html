@@ -5,8 +5,8 @@
       <input id="{{category.name}}" type="checkbox">
       <label for="{{category.name}}">{{category.name}}</label>
       <ul class="nav-list">
-        <li *ngFor="let sub of category.subcategories">
-          <a class="nav-link" (click)=getCategoryItem($event)>{{sub}}</a>
+        <li *ngFor="let child of category.subcategories">
+          <a class="nav-link" (click)=getCategoryItem($event)>{{child}}</a>
         </li>
       </ul>
     </section>

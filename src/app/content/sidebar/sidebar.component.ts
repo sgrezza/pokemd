@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Categories, CategoryItem } from './categories';
+import { CategoryItem } from '../../categories';
 import { RestService } from '../../rest.service';
 
 @Component({
@@ -14,15 +14,17 @@ export class SidebarComponent implements OnInit {
   public categories: CategoryItem[];
 
   ngOnInit() {
-    this.categories = Categories;
-    console.log(this.categories);
+    this.data.getDirectory().subscribe(res => {
+      console.log(res);
+      this.categories = res
+      console.log(this.categories);
+    });
   }
 
   getCategoryItem(event: MouseEvent) {
-    let item = event.target['innerHTML'].toLowerCase()
+    let item = event.target['innerHTML'].toLowerCase();
     item = item.replace(/\s/g, '');
     this.data.getPage(`${item}`).subscribe(res => {
-      console.log(res);
       return this.showData.emit(res.toString());
     });
   }
