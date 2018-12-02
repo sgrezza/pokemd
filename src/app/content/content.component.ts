@@ -18,7 +18,6 @@ export class ContentComponent implements OnInit {
     // });
   }
   onNewData(data:string){
-    console.log(data);
     this.htmlData = data;
   }
 }

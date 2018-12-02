@@ -11,7 +11,6 @@ export class RestService {
   constructor(private http: HttpClient) {}
   API = `http://${environment.api}:3000`
   getPage(path: string){
-    console.log(`${this.API}/${path}`)
     return this.http.get(`${this.API}/${path}`)
   }
   getDirectory(): Observable<any> {
