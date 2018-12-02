@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RendererComponent implements OnInit {
   @Input() body: string;
-  @Input() progress: number = 50;
+  @Input() isLoading: boolean = false;
   constructor() { }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-<nav class="sidenav">
+<nav class="sidenav" [clr-nav-level]="1">
   <h3>Categories</h3>
   <section class="sidenav-content" *ngFor="let category of categories">
     <section class="nav-group collapsible">
@@ -12,3 +12,13 @@
     </section>
   </section>
 </nav>
+<!-- <clr-vertical-nav [clrVerticalNavCollapsible]="true"  >
+ <section *ngFor="let category of categories">
+   <clr-vertical-nav-group>
+     {{category.name}}
+     <clr-vertical-nav-group-children *ngFor="let child of category.subcategories">
+       <a clrVerticalNavLink (click)="getCategoryItem($event)">{{child}}</a>
+      </clr-vertical-nav-group-children>
+    </clr-vertical-nav-group>
+  </section>
+</clr-vertical-nav> -->

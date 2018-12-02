@@ -1,4 +1,3 @@
-<div [ngStyle]="{'width': progress + '%'}" class="bar"></div>
-<div [innerHTML]="body">
- <p>Please select a category...</p>
+<!-- <div [ngStyle]="{'width': progress + '%'}" class="bar"></div> -->
+<div [innerHTML]="body" class="spinner-md" [class.spinner]="isLoading">
 </div>

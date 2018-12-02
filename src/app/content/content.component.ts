@@ -11,13 +11,20 @@ export class ContentComponent implements OnInit {
   constructor(
     private data: RestService
   ) { }
-  htmlData: string;
+
+  public htmlData: string;
+  public isLoading: boolean = false;
   ngOnInit() {
     // this.data.getPage('actionpoints').subscribe(res => {
     //   return this.htmlData = res.toString();
     // });
   }
-  onNewData(data:string){
+  // Listens for 
+  startLoading(bool: boolean) {
+    this.isLoading = bool
+  }
+  onNewData(data:string) {
+    this.isLoading = false;
     this.htmlData = data;
   }
 }
