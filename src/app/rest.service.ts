@@ -29,13 +29,7 @@ export class RestService {
     }
   }
   getPage(path: string) {
-
-      return this.http.get(`${this.API}/${path}`)
-
-    // const req = new HttpRequest('GET', `${this.API}/${path}`, {
-    //   reportProgress: true
-    // });
-    // return this.http.request(req).pipe(map(event => this.getEventMessage(event, file)));
+      return this.http.get(`${this.API}/${path}`);
   }
   getDirectory(): Observable<any> {
     return this.http.get(`${this.API}`);
