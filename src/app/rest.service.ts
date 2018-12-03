@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
 })
 export class RestService {
   constructor(private http: HttpClient) {}
-  API = `http://${environment.api}:3000`;
+  API = environment.api;
 
   private getEventMessage(event: HttpEvent<any>, file: File) {
     switch (event.type) {

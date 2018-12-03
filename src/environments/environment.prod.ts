@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: '45.56.100.209'
+  api: 'https://worklogs.io:3000'
 };
