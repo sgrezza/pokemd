@@ -30,13 +30,15 @@ export class SidebarComponent implements OnInit {
   trackById(id) {
     console.log(id);
   }
-  selectSub(subcat: Element) {
-    
-  }
-  getCategoryItem(event: MouseEvent, categoryIndex: number, index: number) {
-    console.log(event, index)
-    this.selectedItem = event.toElement;
 
+  selectSub(subcat: string) {
+
+  }
+
+  getCategoryItem(event: MouseEvent, categoryUrl: string) {
+    console.log(event)
+    this.selectedItem = event['path'][1].id;
+    console.log(this.selectedItem)
     let item = event.target['innerHTML'].toLowerCase();
     item = item.replace(/\s/g, '');
     this.startLoading.emit(true);
