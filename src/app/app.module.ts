@@ -9,6 +9,9 @@ import { SidebarComponent } from './content/sidebar/sidebar.component';
 import { ContentComponent } from './content/content.component';
 import { RendererComponent } from './content/renderer/renderer.component';
 import { HttpClientModule } from '@angular/common/http';
+// import { RouteRoutingModule } from './app.router';
+import { SquishPipe } from './content/sidebar/app.squish';
+// import { catResolver } from './app.resolver';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     SidebarComponent,
     ContentComponent,
-    RendererComponent
+    RendererComponent,
+    SquishPipe
   ],
-  imports: [BrowserModule, ClarityModule, BrowserAnimationsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    ClarityModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

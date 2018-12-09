@@ -1,6 +1,7 @@
 <div class="content-container">
   <app-sidebar (showData)="onNewData($event)" (startLoading)="startLoading($event)"></app-sidebar>
-    <div class="content-area">
-      <app-renderer [body]="htmlData" [isLoading]="isLoading"></app-renderer>
-    </div>
+  <div class="content-area">
+    <!-- <router-outlet></router-outlet> -->
+    <app-renderer [body]="htmlData" [isLoading]="isLoading"></app-renderer>
   </div>
+</div>

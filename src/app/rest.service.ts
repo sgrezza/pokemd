@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent, HttpEventType } from '@angular/common/http';
-import { CategoryItem } from './categories';
+import { CategoryItem } from './content/sidebar/categories';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class RestService {
   constructor(private http: HttpClient) {}
-  API = environment.api;
+  public API = environment.api;
 
   private getEventMessage(event: HttpEvent<any>, file: File) {
     switch (event.type) {
