@@ -9,9 +9,9 @@ import { SidebarComponent } from './content/sidebar/sidebar.component';
 import { ContentComponent } from './content/content.component';
 import { RendererComponent } from './content/renderer/renderer.component';
 import { HttpClientModule } from '@angular/common/http';
-// import { RouteRoutingModule } from './app.router';
+import { RouteRoutingModule } from './app.router';
 import { SquishPipe } from './content/sidebar/app.squish';
-// import { catResolver } from './app.resolver';
+import { catResolver } from './app.resolver';
 
 @NgModule({
   declarations: [
