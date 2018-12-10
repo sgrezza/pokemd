@@ -8,14 +8,11 @@ import { RestService } from '../../rest.service';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  // Emits when api call returns. Content component is listening.
-  @Output() showData: EventEmitter<string> = new EventEmitter<string>();
-  @Output() startLoading: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private data: RestService) {}
   public categories: CategoryItem[];
   private collapsed: boolean = false;
-  private selectedItem: Element = null
+  private selectedItem: string = null
   private is_local: boolean = this.data.API === 'http://localhost:3001';
 
   ngOnInit() {
@@ -23,30 +20,15 @@ export class SidebarComponent implements OnInit {
       if (this.is_local === true) {
         console.log(res)
       }
-      this.categories = res
+      this.categories = res.categories
     });
   }
 
-  trackById(id) {
-    console.log(id);
-  }
-
-  selectSub(subcat: string) {
-
-  }
-
-  getCategoryItem(event: MouseEvent, categoryUrl: string) {
-    console.log(event)
-    this.selectedItem = event['path'][1].id;
-    console.log(this.selectedItem)
-    let item = event.target['innerHTML'].toLowerCase();
-    item = item.replace(/\s/g, '');
-    this.startLoading.emit(true);
-    this.data.getPage(`${item}`).subscribe(res => {
-      if (this.is_local === true) {
-        console.log(res)
-      }
-      return this.showData.emit(res.toString());
+  getCategoryItem(categoryUrl: string) {
+    console.log(categoryUrl)
+    this.selectedItem = categoryUrl;
+    this.data.getPage(`${categoryUrl}`).subscribe(res => {
+      this.data.emitPage(res.toString());
     });
   }
 }
