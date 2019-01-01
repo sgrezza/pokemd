@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { RestService } from '../../rest.service';
 import { ActivatedRoute } from '@angular/router';
+import {Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-renderer',
@@ -8,25 +9,18 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./renderer.component.css']
 })
 export class RendererComponent implements OnInit {
-  body: string;
+  body: Observable<string> = this.data.newData$;
   isLoading: boolean = false;
   // public body: string;
   constructor(private data: RestService) {
-    this.data.newData$.subscribe(
-      resp => {
-        this.body = resp.toString();
-      },
-      err => {
-        this.body = err;
-      }
-    );
+    this.data.newData$.subscribe();
     this.data.isLoading$.subscribe(bool => {
       this.isLoading = bool;
     })
   }
   ngOnInit() {
     this.data.getPage('home').subscribe(res => {
-     this.data.emitPage(res.toString());
+     this.data.emitPage(res);
     })
   }
 }

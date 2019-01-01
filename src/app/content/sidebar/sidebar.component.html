@@ -16,11 +16,11 @@
 
 <clr-vertical-nav [clr-nav-level]="1">
   <h3>&nbsp;Categories</h3>
-  <section *ngFor="let category of categories">
+  <section *ngFor="let category of categories | async">
     <clr-vertical-nav-group>
       {{ category.name | titlecase }}
       <clr-vertical-nav-group-children *ngFor="let child of category.subcategories;">
-        <a clrVerticalNavLink (click)="getCategoryItem(child.url)" id="{{child.url}}" 
+        <a clrVerticalNavLink (click)="getCategoryItem(child.url)" 
           [ngClass]="{'active': selectedItem == child.url }">{{ child.name }}</a>
       </clr-vertical-nav-group-children>
     </clr-vertical-nav-group>

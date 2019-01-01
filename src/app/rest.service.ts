@@ -1,24 +1,42 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent, HttpEventType } from '@angular/common/http';
 import { CategoryItem } from './content/sidebar/categories';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../environments/environment';
-
-import { Subject } from 'rxjs';
-// import { EventEmitter } from 'events';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
-  constructor(private http: HttpClient) {}
   public API = environment.api;
   // Subjects becuause a regular Observable can only have one listener at a time.
   subcategoryData = new Subject<string>();
   isLoading = new Subject<boolean>();
-  
   isLoading$ = this.isLoading.asObservable();
   newData$ = this.subcategoryData.asObservable();
+
+  public categories$: Observable<CategoryItem[]> = new Observable(observer => {
+    return this.getDirectory()
+      .pipe(tap(res => console.log(res)))
+      .subscribe((res: CategoryItem[]) => observer.next(res));
+  });
+
+  constructor(private http: HttpClient) {}
+
+  emitPage(pageData: string) {
+    this.isLoading.next(false);
+    this.subcategoryData.next(pageData);
+  }
+
+  getPage(path: string) {
+    this.isLoading.next(true);
+    return this.http.get(`${this.API}/${path}`).pipe(map(res => res.toString()));
+  }
+
+  getDirectory(): Observable<any> {
+    return this.http.get(`${this.API}`).pipe(map(res => res['categories']));
+  }
 
   private getEventMessage(event: HttpEvent<any>, file: File) {
     switch (event.type) {
@@ -36,18 +54,5 @@ export class RestService {
       default:
         return `File "${file.name}" surprising upload event: ${event.type}.`;
     }
-  }
-  emitPage(pageData: string) {
-    this.isLoading.next(false);
-    this.subcategoryData.next(pageData);
-  }
-
-  getPage(path: string) {
-    this.isLoading.next(true)
-    return this.http.get(`${this.API}/${path}`)
-  }
-
-  getDirectory(): Observable<any> {
-    return this.http.get(`${this.API}`);
   }
 }
