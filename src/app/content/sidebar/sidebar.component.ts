@@ -10,9 +10,9 @@ import { Observable } from 'rxjs';
 export class SidebarComponent implements OnInit {
 
   public categories: Observable<CategoryItem[]> = this.data.categories$;
-  // private collapsed: boolean = false;
-  // private selectedItem: string = null
-  // private is_local: boolean = this.data.API === 'http://localhost:3001';
+  private collapsed: boolean = false;
+  private selectedItem: string = null
+  private is_local: boolean = this.data.API === 'http://localhost:3001';
 
   constructor(private data: RestService) {
     this.categories.subscribe();
