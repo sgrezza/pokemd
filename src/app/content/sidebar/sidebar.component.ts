@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { CategoryItem } from './categories';
+import { CategoryItem } from '../../categories';
 import { RestService } from '../../rest.service';
 import { Observable } from 'rxjs';
 @Component({

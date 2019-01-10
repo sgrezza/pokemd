@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent, HttpEventType } from '@angular/common/http';
-import { CategoryItem } from './content/sidebar/categories';
+import { CategoryItem } from './categories';
 import { Observable, Subject } from 'rxjs';
 import { environment } from '../environments/environment';
 import { tap, map } from 'rxjs/operators';

@@ -11,6 +11,7 @@ import { RendererComponent } from './content/renderer/renderer.component';
 import { HttpClientModule } from '@angular/common/http';
 // import { RouteRoutingModule } from './app.router';
 import { SquishPipe } from './content/sidebar/app.squish';
+import { SearchComponent } from './search/search.component';
 // import { catResolver } from './app.resolver';
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SquishPipe } from './content/sidebar/app.squish';
     SidebarComponent,
     ContentComponent,
     RendererComponent,
-    SquishPipe
+    SquishPipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
